@@ -9,18 +9,22 @@
 
     .sudoku{
       text-align: center;
-    }
-    table{
       border-collapse: collapse;
-      background-color: ;
+      border: 3px solid black;
     }
     table, th, td{
       border: 1px solid black;
     }
-
     td{
-      width: 20px;
-      height: 20px;
+      width: 30px;
+      height: 30px;
+    }
+
+    .lateral{
+      border-right: 3px solid black;
+    }
+    .bajo{
+      border-bottom: 3px solid black;
     }
 
   </style>
@@ -55,20 +59,19 @@
             for ($i=0; $i < 9; $i++) {
               for ($j=0; $j < 9; $j++) {
                 $numero = $fila[$i][$j];
-                echo "<td>$numero</td>";
-/*                if (($i==2 && $j==2) || ($i==2 && $j==5) || ($i==5 && $j==2) || ($i==5 && $j==5)) {
-                  echo "<td class="lateral bajo">$numero</td>";
+                if (($i==2 && $j==2) || ($i==2 && $j==5) || ($i==5 && $j==2) || ($i==5 && $j==5)) {
+                  echo "<td class='lateral bajo'>$numero</td>";
                 }
                 elseif ($j==2 || $j==5) {
-                  echo "<td class="lateral">$numero</td>";
+                  echo "<td class='lateral'>$numero</td>";
                 }
                 elseif ($i==2 || $i==5) {
-                  echo "<td class="bajo">$numero</td>";
+                  echo "<td class='bajo'>$numero</td>";
                 }
                 else {
                   echo "<td>$numero</td>";
                 }
-*/
+
                 if ($j==8) {
                   echo "</tr><tr>";
                 }
