@@ -23,19 +23,16 @@
       border-collapse: collapse;
       background-color: ;
     }
-    table, th, td{
+    td{
       border: 1px solid black;
     }
     th{
       width: 120px;
       height: 30px;
     }
-
-    .tareas{
-      height: 50px;
-      background-color: #EEE;
+    td{
+      height: 80px;
     }
-
 
   </style>
 
@@ -54,7 +51,7 @@
         <?php
           $numDia = date("d");
           $posDia = date("N");
-          $ultimDiaMes=date("d",(mktime(0,0,0,$month+1,1,$year)-1));
+          $ultimDiaMes = date("d",(mktime(0,0,0,date("m")+1,1,date("Y"))-1));
 
           $numeroDia = $numDia;
           for ($i=0 ; $i<4 ; $i++) {
@@ -66,13 +63,11 @@
           $inicioMes = $posDia - $numeroDia;
           $dia = 1;
 
-          for ($i=1 ; $i<=70 ; $i++) {
-            if ($i<=$inicioMes || $i>$ultimDiaMes*2-2) {
-              echo "<td> </td>";
+          for ($i=1 ; $i<=$ultimDiaMes+$numeroDia ; $i++) {
+            if ($i<=$numeroDia || $i>$ultimDiaMes+$numeroDia) {
+              echo "<td></td>";
             }
-            elseif (($i>=8 && $i<=14) || ($i>=22 && $i<=28) || ($i>=36 && $i<=42) || ($i>=50 && $i<=56) || ($i>=64 && $i<=70)) {
-              echo "<td class='tareas'>dfsgsdkfj</td>";
-            }
+
             else {
               if ($dia==$numDia) {
                 echo "<td class='hoy'>$dia</td>";
@@ -84,8 +79,8 @@
             }
 
             if ($i%7==0) {
-				       echo "</tr><tr>";
-			      }
+		echo "</tr><tr>";
+	    }
           }
         ?>
       </tr>
